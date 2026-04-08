@@ -17,6 +17,8 @@ const NOTIFY_FILE       = path.join(DATA_DIR, 'notifications.json');
 const PRODUCTS_FILE     = path.join(DATA_DIR, 'products.json');
 const TEMPLATES_FILE    = path.join(DATA_DIR, 'emailTemplates.json');
 const SETTINGS_FILE     = path.join(DATA_DIR, 'settings.json');
+const CUSTOMERS_FILE    = path.join(DATA_DIR, 'customers.json');
+const WEBSITE_FILE      = path.join(DATA_DIR, 'website.json');
 
 const LINK_EXPIRY_MS = 6 * 30 * 24 * 60 * 60 * 1000;
 
@@ -25,6 +27,98 @@ if (!fs.existsSync(TOKENS_FILE))    fs.writeFileSync(TOKENS_FILE,  JSON.stringif
 if (!fs.existsSync(SESSIONS_FILE))  fs.writeFileSync(SESSIONS_FILE, '');
 if (!fs.existsSync(EMAIL_CONFIG))   fs.writeFileSync(EMAIL_CONFIG,  JSON.stringify({}));
 if (!fs.existsSync(EMAIL_LOG))      fs.writeFileSync(EMAIL_LOG,     JSON.stringify([]));
+if (!fs.existsSync(CUSTOMERS_FILE)) fs.writeFileSync(CUSTOMERS_FILE, JSON.stringify({}));
+if (!fs.existsSync(WEBSITE_FILE))   fs.writeFileSync(WEBSITE_FILE, JSON.stringify({
+  hero: {
+    badge: 'Trusted by hundreds of customers across China',
+    headline: 'Premium AI Tools,',
+    headlineHighlight: 'Activated Today',
+    subtext: 'DTC Digital Tools Corner gets you genuine Claude Pro and ChatGPT Plus subscriptions — same-day activation, flexible plans, and real human support via WeChat and WhatsApp.',
+    ctaPrimary: 'Contact Us Now',
+    ctaSecondary: 'View Pricing',
+    stats: [
+      { value: '500+', label: 'Happy Customers' },
+      { value: '<4h',  label: 'Avg Activation' },
+      { value: '2',    label: 'Premium Products' },
+      { value: '24/7', label: 'Support Available' }
+    ],
+    trustItems: ['Same-day activation','Genuine subscriptions','WeChat & WhatsApp support','Flexible packages']
+  },
+  services: {
+    sectionLabel: 'Our Products',
+    title: 'Everything you need to use the world\'s best AI',
+    subtitle: 'We provide genuine access to the leading AI platforms. Pay in your preferred way, receive your link the same day.',
+    serviceNote: 'After you contact us and complete payment, we send you a personalised activation link. You visit the link, enter your account details, and your subscription is activated — typically within a few hours. Prices shown are indicative; contact us for the latest rates.'
+  },
+  how: {
+    sectionLabel: 'Process',
+    title: 'Up and running in 4 simple steps',
+    subtitle: 'From first contact to fully activated subscription — usually done in under 4 hours.',
+    steps: [
+      { title: 'Contact Us', text: "Reach out via WeChat or WhatsApp. Tell us which product and package you want. We'll reply promptly with pricing and payment details." },
+      { title: 'Make Payment', text: "Pay via WeChat Pay, Alipay, bank transfer, or your preferred method. We'll confirm receipt and prepare your activation link right away." },
+      { title: 'Receive Your Link', text: 'We send you a unique, secure activation link via WeChat or email. Click it, enter your account details — we walk you through every step.' },
+      { title: 'Enjoy & Renew', text: "Your subscription is live. We send renewal reminders before it expires so you never lose access. Long-term customers get special rates." }
+    ]
+  },
+  why: {
+    sectionLabel: 'Why Choose DTC',
+    title: 'Built around making your experience effortless',
+    subtitle: "We've served hundreds of customers and obsess over the details that make the difference.",
+    cards: [
+      { icon: '⚡', title: 'Same-Day Activation', text: 'Most orders are activated within 2–4 hours of payment confirmation. We don\'t keep you waiting.' },
+      { icon: '🔒', title: 'Genuine Subscriptions', text: 'Every subscription we provide is 100% authentic. You get the real product — no shared accounts, no tricks.' },
+      { icon: '💬', title: 'Real Human Support', text: 'Reach us on WeChat or WhatsApp any time. A real person responds — not a bot. We speak Chinese and English.' },
+      { icon: '📅', title: 'Flexible Plans', text: 'Monthly, quarterly, semi-annual, or annual — choose what suits your budget. Longer plans save you more.' },
+      { icon: '🔔', title: 'Renewal Reminders', text: "We notify you before your subscription expires so you're never caught off guard. Renewing takes under 5 minutes." },
+      { icon: '💳', title: 'Local Payment Methods', text: 'Pay with WeChat Pay, Alipay, or bank transfer. No need for international credit cards or foreign accounts.' },
+      { icon: '🎁', title: 'Loyalty Rewards', text: 'Returning customers qualify for exclusive rates and priority processing. We value long-term relationships.' },
+      { icon: '📊', title: 'Your Account Portal', text: 'Track your subscription status, expiry date, and account details any time through your personal activation portal.' }
+    ]
+  },
+  reviews: {
+    sectionLabel: 'Customer Reviews',
+    title: 'What our customers say',
+    items: [
+      { stars: 5, text: '"Ordered Claude Pro on a Tuesday evening, had it activated by Wednesday morning. The whole process was explained clearly over WeChat. Excellent service."', name: 'Zhang Wei', role: 'Product Manager, Shanghai', avatar: '张' },
+      { stars: 5, text: '"Been using DTC for my ChatGPT Plus for 8 months now. They always send a reminder before renewal and the process is smooth every time. Highly recommend."', name: 'Li Fang', role: 'Freelance Designer, Beijing', avatar: 'L' },
+      { stars: 5, text: '"I was sceptical at first but everything worked perfectly. Real subscription, fast activation, and when I had a question the support team replied on WhatsApp within minutes."', name: 'Chen Jing', role: 'Software Engineer, Shenzhen', avatar: '陈' }
+    ]
+  },
+  faq: {
+    sectionLabel: 'FAQ',
+    title: 'Common questions',
+    items: [
+      { q: 'Are these genuine Claude Pro / ChatGPT Plus subscriptions?', a: "Yes — every subscription we provide is completely genuine. You receive real access to Claude Pro or ChatGPT Plus on your own account. We don't use shared logins, unofficial workarounds, or any grey-market methods." },
+      { q: 'How long does activation take?', a: "Most orders are activated within 2–4 hours of payment being confirmed. During busy periods it may take a little longer, but we'll keep you updated via WeChat or WhatsApp. We aim to have everything live the same day you order." },
+      { q: 'What payment methods do you accept?', a: "We accept WeChat Pay, Alipay, and bank transfer (domestic Chinese banks). Contact us if you need a different arrangement — we're flexible and happy to help." },
+      { q: 'What happens when my subscription is about to expire?', a: "We send you a renewal reminder by email and/or WeChat around 30 days and again 3–5 days before your subscription expires. Renewing is quick — just contact us, pay, and we'll extend your subscription immediately." },
+      { q: 'Do you offer refunds?', a: "If there's a problem with your activation we will fix it or provide a full refund — no questions asked. We stand behind every order. Please contact us as soon as possible if you experience any issues." },
+      { q: 'Can I upgrade from a monthly plan to an annual plan?', a: 'Yes — contact us any time and we can arrange an upgrade or switch to a different package. Returning customers also qualify for our loyalty rates, so it often works out even cheaper when you commit to a longer plan.' },
+      { q: 'Is my information kept private?', a: "Absolutely. We only collect the account details needed to activate your subscription (typically just your email address and account region). We never share your information with third parties and we don't store sensitive login credentials." }
+    ]
+  },
+  contact: {
+    sectionLabel: 'Get In Touch',
+    title: "Ready to get started? We're here to help.",
+    subtitle: 'Reach out via any channel below. We typically reply within minutes during business hours, and always within a few hours otherwise.',
+    wechatId: 'dtc_digitaltools',
+    whatsapp: '+86 197 3812 2807',
+    whatsappLink: 'https://wa.me/8619738122807',
+    email: 'dtc@dtc1.shop',
+    ctaNote: "Not sure which plan is right for you? Message us and we'll recommend the best option for your needs and budget."
+  },
+  footer: {
+    brand: 'Digital Tools Corner',
+    copyright: '© 2026 DTC Digital Tools Corner · WhatsApp: +86 197 3812 2807 · WeChat: dtc_digitaltools',
+    links: ['Services','How It Works','Why DTC','FAQ','Contact']
+  },
+  nav: {
+    links: ['Services','How It Works','Why DTC','FAQ','Contact'],
+    ctaText: 'Get Started →'
+  },
+  pushNotification: { enabled: false, message: '', type: 'info' }
+}, null, 2));
 if (!fs.existsSync(SETTINGS_FILE))  fs.writeFileSync(SETTINGS_FILE, JSON.stringify({ currency: 'USD', currencySymbol: '$', currencyName: 'US Dollar', activationEmailTemplateId: 'welcome' }, null, 2));
 if (!fs.existsSync(NOTIFY_FILE))    fs.writeFileSync(NOTIFY_FILE,   JSON.stringify({ enabled: false, message: '', type: 'info' }, null, 2));
 if (!fs.existsSync(TEMPLATES_FILE)) fs.writeFileSync(TEMPLATES_FILE, JSON.stringify({"templates": [{"id": "welcome", "name": "✅ Welcome / Activation Confirmed", "subject": "Welcome to DTC — Your {{package}} is ready! 🎉", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#2563eb;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">⚡</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">Activation Confirmed</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">{{package}}</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">Welcome to DTC, {{name}}! 🎉</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">Your <strong>{{package}}</strong> is now active and ready to use. Here is everything you need to get started.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f8faff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Package</span>\n  <div style=\"font-size:14px;font-weight:600;color:#1e293b;margin-top:3px;font-family:monospace\">{{package}}</div>\n</td></tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#15803d;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Status</span>\n  <div style=\"font-size:14px;font-weight:600;color:#15803d;margin-top:3px;font-family:monospace\">✓ Active</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><h2 style=\"margin:0 0 6px;font-size:16px;font-weight:700;color:#1e293b\">What to do next</h2><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">1</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Sign in to your account and check your plan status in Settings → Billing.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">2</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Start a conversation to confirm everything is working correctly.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">3</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Reach out on WeChat or email us if you need any help.</td>\n</tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 0;font-size:13px;color:#64748b;line-height:1.7\">Thank you for choosing DTC. We are glad to have you.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326444Z"}, {"id": "renewal-30d", "name": "⏰ Renewal Reminder (30 days)", "subject": "Your {{package}} subscription expires in {{daysLeft}} days — DTC", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#d97706;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">⏰</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">Renewal Reminder</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">Action needed</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">Your subscription renews in {{daysLeft}} days</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">Hi <strong>{{name}}</strong>, your <strong>{{package}}</strong> subscription will expire on <strong>{{expiry}}</strong>. Renew early to avoid any interruption.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f8faff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Package</span>\n  <div style=\"font-size:14px;font-weight:600;color:#1e293b;margin-top:3px;font-family:monospace\">{{package}}</div>\n</td></tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#fffbeb;border:1px solid #fde68a;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#b45309;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Expiry Date</span>\n  <div style=\"font-size:14px;font-weight:600;color:#b45309;margin-top:3px;font-family:monospace\">{{expiry}}</div>\n</td></tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#fffbeb;border:1px solid #fde68a;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#b45309;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Days Remaining</span>\n  <div style=\"font-size:14px;font-weight:600;color:#b45309;margin-top:3px;font-family:monospace\">{{daysLeft}} days</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:20px\">\n<tr><td style=\"padding:16px 20px\">\n  <div style=\"font-size:20px;margin-bottom:6px\">💡</div>\n  <div style=\"font-size:14px;font-weight:700;color:#1d4ed8;margin-bottom:4px\">How to Renew</div>\n  <div style=\"font-size:13px;color:#475569;line-height:1.6\">Contact us on WeChat or reply to this email and we will set up your renewal link right away.</div>\n</td></tr></table><p style=\"margin:0 0 0;font-size:13px;color:#64748b;line-height:1.7\">Renewing takes less than 5 minutes. Contact us today to keep your access uninterrupted.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326466Z"}, {"id": "renewal-urgent", "name": "🚨 Urgent Renewal (3 days)", "subject": "Last chance to renew — expires {{expiry}} — DTC", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#dc2626;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">🚨</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">Urgent Reminder</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">Expires {{expiry}}</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#fef2f2;border:1px solid #fecaca;border-radius:10px;margin-bottom:20px\">\n<tr><td style=\"padding:16px 20px\">\n  <div style=\"font-size:20px;margin-bottom:6px\">🚨</div>\n  <div style=\"font-size:14px;font-weight:700;color:#dc2626;margin-bottom:4px\">Urgent — Your subscription expires in {{daysLeft}} days</div>\n  <div style=\"font-size:13px;color:#7f1d1d;line-height:1.6\">After expiry your access will be suspended. Contact us immediately to renew.</div>\n</td></tr></table><h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">Last chance to renew, {{name}}</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">Your <strong>{{package}}</strong> subscription expires on <strong>{{expiry}}</strong>. This is your final reminder before access is suspended.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f8faff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Package</span>\n  <div style=\"font-size:14px;font-weight:600;color:#1e293b;margin-top:3px;font-family:monospace\">{{package}}</div>\n</td></tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#fef2f2;border:1px solid #fecaca;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#dc2626;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">⚠ Expires</span>\n  <div style=\"font-size:14px;font-weight:600;color:#dc2626;margin-top:3px;font-family:monospace\">{{expiry}}</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 0;font-size:14px;color:#475569;line-height:1.7\"><strong>To renew:</strong> Contact us on WeChat or reply to this email with your renewal request. We will generate your renewal link immediately.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326471Z"}, {"id": "expired", "name": "⏱ Subscription Expired", "subject": "Your {{package}} subscription has expired — DTC", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#dc2626;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">⏱</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">Subscription Expired</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">{{package}}</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">Your subscription has ended</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">Hi <strong>{{name}}</strong>, your <strong>{{package}}</strong> subscription has expired and your access has been suspended.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#fef2f2;border:1px solid #fecaca;border-radius:10px;margin-bottom:20px\">\n<tr><td style=\"padding:16px 20px\">\n  <div style=\"font-size:20px;margin-bottom:6px\">⏱</div>\n  <div style=\"font-size:14px;font-weight:700;color:#dc2626;margin-bottom:4px\">Access Suspended</div>\n  <div style=\"font-size:13px;color:#475569;line-height:1.6\">Your {{package}} access ended on {{expiry}}. Renew now to restore access immediately.</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><h2 style=\"margin:0 0 6px;font-size:16px;font-weight:700;color:#1e293b\">Renew now — restore access in minutes</h2><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#dc262620;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#dc2626;text-align:center;line-height:26px\">1</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Contact us on WeChat or reply to this email.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#dc262620;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#dc2626;text-align:center;line-height:26px\">2</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">We will send you a renewal activation link.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#dc262620;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#dc2626;text-align:center;line-height:26px\">3</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Complete the form and your access is restored immediately.</td>\n</tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 0;font-size:13px;color:#64748b;line-height:1.7\">Questions? Reach us at <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#2563eb\">dtc@dtc1.shop</a> or on WeChat.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326475Z"}, {"id": "promo", "name": "🎁 Promotional / Special Offer", "subject": "Exclusive offer for DTC customers — {{name}} 🎁", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#15803d;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">🎁</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">Special Offer</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">Exclusive for you</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">Exclusive offer for you, {{name}} 🎁</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">As a valued DTC customer, we are offering you an exclusive deal on your next subscription. Limited time only.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;margin-bottom:20px\">\n<tr><td style=\"padding:16px 20px\">\n  <div style=\"font-size:20px;margin-bottom:6px\">🎉</div>\n  <div style=\"font-size:14px;font-weight:700;color:#15803d;margin-bottom:4px\">Special Offer — Limited Time</div>\n  <div style=\"font-size:13px;color:#475569;line-height:1.6\">Upgrade or renew your plan and get an exclusive deal available only to existing customers. Contact us on WeChat to claim it before it expires.</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><h2 style=\"margin:0 0 6px;font-size:16px;font-weight:700;color:#1e293b\">What is included</h2><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#15803d20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#15803d;text-align:center;line-height:26px\">1</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Access to all premium AI tools at a discounted rate.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#15803d20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#15803d;text-align:center;line-height:26px\">2</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Priority processing — your link is activated same day.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#15803d20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#15803d;text-align:center;line-height:26px\">3</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Dedicated support via WeChat throughout your subscription.</td>\n</tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 0;font-size:13px;color:#64748b;line-height:1.7\">To claim your offer, simply contact us on WeChat and mention this email. Offer available while stocks last.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326478Z"}, {"id": "announcement", "name": "📢 General Announcement", "subject": "Important update from DTC", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#6366f1;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">📢</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">Announcement</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">DTC Update</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">Important update from DTC</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">Hi <strong>{{name}}</strong>, we have something important to share with all our customers.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f8faff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Package</span>\n  <div style=\"font-size:14px;font-weight:600;color:#1e293b;margin-top:3px;font-family:monospace\">{{package}}</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 12px;font-size:15px;color:#1e293b;line-height:1.7\"><strong>[Write your announcement here]</strong></p><p style=\"margin:0 0 20px;font-size:14px;color:#475569;line-height:1.7\">[Add more details about the update, what it means for customers, and any action required.]</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 0;font-size:13px;color:#64748b;line-height:1.7\">If you have any questions about this update, reply to this email or contact us on WeChat. We are always happy to help.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326484Z"}, {"id": "payment-thanks", "name": "💳 Payment Received", "subject": "Payment received — thank you, {{name}}! — DTC", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#0891b2;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">💳</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">Payment Received</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">Thank you</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">Payment received — thank you, {{name}}!</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">We have received your payment and your activation link is being processed. You will hear from us shortly.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f8faff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Package</span>\n  <div style=\"font-size:14px;font-weight:600;color:#1e293b;margin-top:3px;font-family:monospace\">{{package}}</div>\n</td></tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#fffbeb;border:1px solid #fde68a;border-radius:8px;margin-bottom:10px\">\n<tr><td style=\"padding:10px 16px\">\n  <span style=\"font-size:11px;color:#b45309;text-transform:uppercase;letter-spacing:.07em;font-weight:600\">Status</span>\n  <div style=\"font-size:14px;font-weight:600;color:#b45309;margin-top:3px;font-family:monospace\">⏳ Processing — we will be in touch shortly</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><h2 style=\"margin:0 0 6px;font-size:16px;font-weight:700;color:#1e293b\">What happens next</h2><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">1</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">We verify your payment and prepare your activation link. This usually takes a few hours.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">2</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">You receive your unique activation link via WeChat or email.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">3</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">You submit your account details and your subscription is activated.</td>\n</tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 0;font-size:13px;color:#64748b;line-height:1.7\">Thank you for your trust in DTC. If you have any questions in the meantime, contact us on WeChat.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326488Z"}, {"id": "win-back", "name": "💙 Win Back / Re-engagement", "subject": "We miss you, {{name}} — come back to DTC", "body": "<!DOCTYPE html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/></head><body style=\"margin:0;padding:0;background:#f0f4ff;font-family:'Helvetica Neue',Arial,sans-serif\">\n<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f0f4ff;padding:32px 16px\">\n<tr><td align=\"center\">\n<table width=\"600\" cellpadding=\"0\" cellspacing=\"0\" style=\"max-width:600px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 24px rgba(37,99,235,.08)\">\n\n<!-- Header -->\n<tr><td style=\"background:#2563eb;padding:32px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:28px;line-height:1\">💙</td>\n    <td style=\"padding-left:12px\">\n      <div style=\"font-size:20px;font-weight:700;color:#ffffff;letter-spacing:-.02em\">DTC</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.65);margin-top:2px;letter-spacing:.04em\">DIGITAL TOOLS CORNER</div>\n    </td>\n    <td align=\"right\">\n      <div style=\"font-size:13px;font-weight:700;color:rgba(255,255,255,.9)\">We Miss You</div>\n      <div style=\"font-size:11px;color:rgba(255,255,255,.6);margin-top:2px\">Come back to DTC</div>\n    </td>\n  </tr></table>\n</td></tr>\n\n<!-- Body -->\n<tr><td style=\"padding:36px 36px 28px\">\n<h1 style=\"margin:0 0 8px;font-size:24px;font-weight:700;color:#1e293b;letter-spacing:-.02em;line-height:1.2\">We miss you, {{name}}</h1><p style=\"margin:0 0 16px;font-size:15px;color:#475569;line-height:1.7\">Your <strong>{{package}}</strong> subscription expired on <strong>{{expiry}}</strong>. We would love to have you back.</p><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;margin-bottom:20px\">\n<tr><td style=\"padding:16px 20px\">\n  <div style=\"font-size:20px;margin-bottom:6px\">💙</div>\n  <div style=\"font-size:14px;font-weight:700;color:#1d4ed8;margin-bottom:4px\">Special returning customer offer</div>\n  <div style=\"font-size:13px;color:#475569;line-height:1.6\">As a previous DTC customer, you qualify for our returning customer rate. Contact us on WeChat to find out more.</div>\n</td></tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><h2 style=\"margin:0 0 6px;font-size:16px;font-weight:700;color:#1e293b\">Why customers come back to DTC</h2><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">1</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Same-day activation — your link is processed within hours.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">2</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Flexible packages — monthly, quarterly, or annual plans.</td>\n</tr></table><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin-bottom:10px\">\n<tr>\n  <td width=\"32\" valign=\"top\"><div style=\"width:26px;height:26px;background:#2563eb20;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#2563eb;text-align:center;line-height:26px\">3</div></td>\n  <td style=\"padding-left:10px;font-size:14px;color:#475569;line-height:1.6;padding-top:3px\">Dedicated WeChat support throughout your subscription.</td>\n</tr></table><div style=\"height:1px;background:#e2e8f0;margin:24px 0\"></div><p style=\"margin:0 0 0;font-size:13px;color:#64748b;line-height:1.7\">Ready to get back on board? Contact us on WeChat and we will set everything up for you.</p>\n</td></tr>\n\n<!-- Footer -->\n<tr><td style=\"background:#f8faff;border-top:1px solid #e2e8f0;padding:18px 36px\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr>\n    <td style=\"font-size:12px;color:#94a3b8;line-height:1.6\">\n      DTC — Digital Tools Corner &nbsp;·&nbsp; \n      <a href=\"mailto:dtc@dtc1.shop\" style=\"color:#94a3b8;text-decoration:none\">dtc@dtc1.shop</a>\n    </td>\n    <td align=\"right\" style=\"font-size:11px;color:#cbd5e1\">Automated email</td>\n  </tr></table>\n</td></tr>\n\n</table>\n</td></tr></table>\n</body></html>", "lastModified": "2026-04-06T23:16:18.326494Z"}]}, null, 2));
@@ -113,6 +207,10 @@ const loadTemplates   = () => JSON.parse(fs.readFileSync(TEMPLATES_FILE,'utf8'))
 const saveTemplates   = t  => fs.writeFileSync(TEMPLATES_FILE, JSON.stringify(t, null, 2));
 const loadSettings    = () => JSON.parse(fs.readFileSync(SETTINGS_FILE,'utf8'));
 const saveSettings    = s  => fs.writeFileSync(SETTINGS_FILE, JSON.stringify(s, null, 2));
+const loadCustomers   = () => JSON.parse(fs.readFileSync(CUSTOMERS_FILE,'utf8'));
+const saveCustomers   = c  => fs.writeFileSync(CUSTOMERS_FILE, JSON.stringify(c, null, 2));
+const loadWebsite     = () => JSON.parse(fs.readFileSync(WEBSITE_FILE,'utf8'));
+const saveWebsite     = w  => fs.writeFileSync(WEBSITE_FILE, JSON.stringify(w, null, 2));
 
 // ── Duration lookup — checks product packages first, falls back to label parsing ──
 function getDurationDays(productId, packageLabel) {
@@ -171,22 +269,29 @@ function calcRevenue(tokens) {
   let total        = 0;
   let resellerTotal= 0;
   let directTotal  = 0;
+  let freeCount    = 0;
+  let refundTotal  = 0;
   for (const t of Object.values(tokens)) {
-    if (!t.approved || !t.price) continue;
+    if (!t.approved) continue;
+    if (t.deactivated) continue;              // ← deactivated links excluded from revenue
+    if (t.refunded)    { refundTotal += (t.refundAmount || t.paidPrice || 0); continue; } // ← refunded excluded
+    if (t.isFree) { freeCount++; continue; }   // track gifted separately
+    if (!t.price) continue;
+    const effectivePrice = t.paidPrice !== undefined ? t.paidPrice : Math.max(0, t.price - (t.discount || 0));
     const pid = t.productId || 'unknown';
-    byProduct[pid] = (byProduct[pid] || 0) + t.price;
-    total += t.price;
+    byProduct[pid] = (byProduct[pid] || 0) + effectivePrice;
+    total += effectivePrice;
     if (t.resellerId) {
       const rid = t.resellerId;
       if (!byReseller[rid]) byReseller[rid] = { name: t.resellerName || rid, total: 0, count: 0 };
-      byReseller[rid].total += t.price;
+      byReseller[rid].total += effectivePrice;
       byReseller[rid].count++;
-      resellerTotal += t.price;
+      resellerTotal += effectivePrice;
     } else {
-      directTotal += t.price;
+      directTotal += effectivePrice;
     }
   }
-  return { total, byProduct, byReseller, resellerTotal, directTotal };
+  return { total, byProduct, byReseller, resellerTotal, directTotal, freeCount, refundTotal };
 }
 
 // ── Email ──────────────────────────────────────────────────────────────────────
@@ -278,13 +383,17 @@ app.get('/admin/revenue', (req, res) => {
 
 // ── Generate link ──────────────────────────────────────────────────────────────
 app.post('/admin/generate', (req, res) => {
-  const { adminKey, customerName, productId, packageLabel, price, instructionSetId, postInstructionSetId, resellerId, resellerName } = req.body;
+  const { adminKey, customerName, productId, packageLabel, price, isFree,
+          discount, discountReason, paymentMethod, paymentRef,
+          instructionSetId, postInstructionSetId, resellerId, resellerName } = req.body;
   if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
   if (!customerName)  return res.status(400).json({ error: 'Customer name is required.' });
   if (!productId)     return res.status(400).json({ error: 'Product is required.' });
   if (!packageLabel)  return res.status(400).json({ error: 'Package is required.' });
-  if (!price && price !== 0) return res.status(400).json({ error: 'Price is required. Please set a price before generating a link.' });
-  if (parseFloat(price) <= 0) return res.status(400).json({ error: 'Price must be greater than 0. Cannot generate a free link.' });
+  if (!isFree) {
+    if (price === undefined || price === null || price === '') return res.status(400).json({ error: 'Price is required.' });
+    if (parseFloat(price) <= 0) return res.status(400).json({ error: 'Price must be greater than 0. Use the Free / Gifted Link toggle for $0 links.' });
+  }
 
   // Look up product
   const { products } = loadProducts();
@@ -301,17 +410,22 @@ app.post('/admin/generate', (req, res) => {
   tokens[token] = {
     customerName,
     productId,
-    productName:      product.name,
-    packageType:      packageLabel,
-    price:            parseFloat(price),
-    currency:         loadSettings().currency || 'USD',
-    currencySymbol:   loadSettings().currencySymbol || '$',
-    resellerId:       resellerId   || null,
-    resellerName:     resellerName || null,
-    product:          product.type,           // kept for backward-compat
-    credentialsMode:  product.credentialsMode || false,
-    loginDetails:     product.loginDetails    || '',
-    instructionSetId: instrId,
+    productName:          product.name,
+    packageType:          packageLabel,
+    price:                isFree ? 0 : parseFloat(price),
+    isFree:               !!isFree,
+    discount:             parseFloat(discount) || 0,
+    discountReason:       discountReason || '',
+    paymentMethod:        paymentMethod  || '',
+    paymentRef:           paymentRef     || '',
+    currency:             loadSettings().currency       || 'USD',
+    currencySymbol:       loadSettings().currencySymbol || '$',
+    resellerId:           resellerId   || null,
+    resellerName:         resellerName || null,
+    product:              product.type,
+    credentialsMode:      product.credentialsMode || false,
+    loginDetails:         product.loginDetails    || '',
+    instructionSetId:     instrId,
     postInstructionSetId: postId,
     createdAt:    new Date().toISOString(),
     expiresAt,
@@ -319,20 +433,97 @@ app.post('/admin/generate', (req, res) => {
     used: false, approved: false, declined: false, deactivated: false,
   };
   saveTokens(tokens);
+
+  // Auto-register customer profile if not already present
+  try {
+    const customers = loadCustomers();
+    const cid = customerName.toLowerCase().replace(/\s+/g, '-');
+    if (!customers[cid]) {
+      customers[cid] = { id: cid, name: customerName, email: '', wechat: '', notes: '', createdAt: new Date().toISOString() };
+      saveCustomers(customers);
+    }
+  } catch(e) { console.warn('Could not auto-register customer:', e.message); }
+
   const link = `${req.protocol}://${req.get('host')}/submit?token=${token}`;
   res.json({ link, token, expiresAt, price: parseFloat(price) });
 });
 
 // ── Deactivate / Reactivate ────────────────────────────────────────────────────
 app.post('/admin/deactivate', (req, res) => {
-  const { adminKey, token } = req.body; if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
-  const tokens = loadTokens(); if (!tokens[token]) return res.status(404).json({ error: 'Not found.' });
-  tokens[token].deactivated = true; tokens[token].deactivatedAt = new Date().toISOString(); saveTokens(tokens); res.json({ success: true });
+  const { adminKey, token, reason } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const tokens = loadTokens();
+  if (!tokens[token]) return res.status(404).json({ error: 'Not found.' });
+  tokens[token].deactivated    = true;
+  tokens[token].deactivatedAt  = new Date().toISOString();
+  tokens[token].deactivationReason = reason || '';
+  // Mark revenue as excluded so calcRevenue skips this token
+  tokens[token].revenueExcluded = true;
+  tokens[token].revenueExcludedReason = 'deactivated';
+  saveTokens(tokens);
+  res.json({ success: true });
 });
+
 app.post('/admin/reactivate', (req, res) => {
-  const { adminKey, token } = req.body; if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
-  const tokens = loadTokens(); if (!tokens[token]) return res.status(404).json({ error: 'Not found.' });
-  tokens[token].deactivated = false; delete tokens[token].deactivatedAt; saveTokens(tokens); res.json({ success: true });
+  const { adminKey, token } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const tokens = loadTokens();
+  if (!tokens[token]) return res.status(404).json({ error: 'Not found.' });
+  tokens[token].deactivated    = false;
+  tokens[token].revenueExcluded = false;
+  delete tokens[token].deactivatedAt;
+  delete tokens[token].deactivationReason;
+  delete tokens[token].revenueExcludedReason;
+  saveTokens(tokens);
+  res.json({ success: true });
+});
+
+// ── Refund a token ─────────────────────────────────────────────────────────────
+app.post('/admin/refund', (req, res) => {
+  const { adminKey, token, refundAmount, refundReason, refundMethod } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const tokens = loadTokens();
+  if (!tokens[token]) return res.status(404).json({ error: 'Not found.' });
+  const t = tokens[token];
+  const amount = refundAmount !== undefined && refundAmount !== '' ? parseFloat(refundAmount) : (t.paidPrice || Math.max(0, (t.price||0)-(t.discount||0)));
+  tokens[token].refunded       = true;
+  tokens[token].refundedAt     = new Date().toISOString();
+  tokens[token].refundAmount   = amount;
+  tokens[token].refundReason   = refundReason  || '';
+  tokens[token].refundMethod   = refundMethod  || t.paymentMethod || '';
+  tokens[token].revenueExcluded = true;
+  tokens[token].revenueExcludedReason = 'refunded';
+  // Also deactivate if still active
+  if (!tokens[token].deactivated) {
+    tokens[token].deactivated   = true;
+    tokens[token].deactivatedAt = new Date().toISOString();
+    tokens[token].deactivationReason = 'Refunded';
+  }
+  saveTokens(tokens);
+  res.json({ success: true });
+});
+
+// ── Update payment details on a token ─────────────────────────────────────────
+app.post('/admin/update-payment', (req, res) => {
+  const { adminKey, token, paymentMethod, paymentRef, paidPrice, discount, discountReason, notes } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const tokens = loadTokens();
+  if (!tokens[token]) return res.status(404).json({ error: 'Not found.' });
+  if (paymentMethod !== undefined) tokens[token].paymentMethod   = paymentMethod;
+  if (paymentRef    !== undefined) tokens[token].paymentRef      = paymentRef;
+  if (paidPrice     !== undefined && paidPrice !== '') {
+    const pp = parseFloat(paidPrice);
+    if (!isNaN(pp) && pp >= 0) tokens[token].paidPrice = pp;
+  }
+  if (discount !== undefined && discount !== '') {
+    const d = parseFloat(discount);
+    if (!isNaN(d) && d >= 0) tokens[token].discount = d;
+  }
+  if (discountReason !== undefined) tokens[token].discountReason = discountReason;
+  if (notes          !== undefined) tokens[token].adminNotes     = notes;
+  tokens[token].paymentUpdatedAt = new Date().toISOString();
+  saveTokens(tokens);
+  res.json({ success: true });
 });
 
 // ── Validate token ─────────────────────────────────────────────────────────────
@@ -441,8 +632,50 @@ app.get('/api/status', (req, res) => {
 });
 
 // ── Approve ────────────────────────────────────────────────────────────────────
+// ── Customer portal: lookup by email ──────────────────────────────────────────
+app.post('/api/customer/login', (req, res) => {
+  const { email } = req.body;
+  if (!email || !email.trim()) return res.status(400).json({ error: 'Email is required.' });
+  const tokens  = loadTokens();
+  const settings= loadSettings();
+  const sym     = settings.currencySymbol || '$';
+  const records = Object.entries(tokens)
+    .filter(([, t]) => t.email && t.email.toLowerCase() === email.trim().toLowerCase() && t.used)
+    .map(([tok, t]) => {
+      const effectivePrice = t.isFree ? 0 : Math.max(0, (t.price || 0) - (t.discount || 0));
+      return {
+        token:        tok,
+        customerName: t.customerName,
+        productName:  t.productName || t.productId,
+        packageType:  t.packageType,
+        status:       t.declined ? 'declined' : t.approved ? 'active' : 'processing',
+        approvedAt:   t.approvedAt   || null,
+        submittedAt:  t.submittedAt  || null,
+        subscriptionExpiresAt: t.subscriptionExpiresAt || null,
+        durationDays: t.durationDays || 30,
+        isFree:       !!t.isFree,
+        price:        t.price || 0,
+        discount:     t.discount || 0,
+        effectivePrice,
+        paidPrice:    t.paidPrice !== undefined ? t.paidPrice : effectivePrice,
+        paidAt:       t.paidAt || t.approvedAt || null,
+        currency:     settings.currency || 'USD',
+        currencySymbol: sym,
+        paymentMethod: t.paymentMethod || '',
+        paymentRef:   t.paymentRef    || '',
+        discountReason:t.discountReason|| '',
+        declineReason: t.declineReason || '',
+        wechat:       t.wechat || '',
+      };
+    })
+    .sort((a, b) => new Date(b.submittedAt || 0) - new Date(a.submittedAt || 0));
+  if (!records.length) return res.status(404).json({ error: 'No records found for this email address.' });
+  res.json({ records, name: records[0].customerName });
+});
+
+// ── Admin approve with optional custom paid price ─────────────────────────────
 app.post('/admin/approve', async (req, res) => {
-  const { adminKey, token } = req.body; if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const { adminKey, token, customPrice } = req.body; if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
   const tokens = loadTokens(); if (!tokens[token]) return res.status(404).json({ error: 'Not found.' });
   if (tokens[token].approved) return res.json({ success: true });
   const days = getDurationDays(tokens[token].productId, tokens[token].packageType);
@@ -450,6 +683,19 @@ app.post('/admin/approve', async (req, res) => {
   tokens[token].approvedAt = new Date().toISOString();
   tokens[token].subscriptionExpiresAt = new Date(Date.now() + days*24*60*60*1000).toISOString();
   tokens[token].subscriptionDays = days;
+  // Lock in the paid price at approval time (admin can override)
+  if (customPrice !== undefined && customPrice !== null && customPrice !== '') {
+    const cp = parseFloat(customPrice);
+    if (!isNaN(cp) && cp >= 0) {
+      tokens[token].paidPrice = cp;
+      tokens[token].paidAt    = new Date().toISOString();
+    }
+  } else {
+    // Lock effective price from existing fields
+    tokens[token].paidPrice = tokens[token].isFree ? 0
+      : Math.max(0, (tokens[token].price || 0) - (tokens[token].discount || 0));
+    tokens[token].paidAt = new Date().toISOString();
+  }
   saveTokens(tokens);
 
   // Auto-send activation email if customer has email + template configured
@@ -555,7 +801,7 @@ app.post('/admin/email-templates/delete', (req, res) => {
 
 // ── Bulk email send ────────────────────────────────────────────────────────────
 app.post('/admin/bulk-email', async (req, res) => {
-  const { adminKey, templateId, customSubject, customBody, recipientFilter, tokenList } = req.body;
+  const { adminKey, templateId, customSubject, customBody, recipientFilter, tokenList, extraRecipients } = req.body;
   if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
 
   const cfg = loadEmailCfg();
@@ -566,6 +812,56 @@ app.post('/admin/bulk-email', async (req, res) => {
   let subject = customSubject || '';
   let body    = customBody    || '';
   if (templateId) {
+    const data = loadTemplates();
+    const tmpl = data.templates.find(t => t.id === templateId);
+    if (tmpl) { subject = subject || tmpl.subject; body = body || tmpl.body; }
+  }
+  if (!subject || !body) return res.status(400).json({ error: 'Subject and body are required.' });
+
+  // Build recipient list from tokens
+  const tokens  = loadTokens();
+  let recipients = [];
+
+  if (tokenList && tokenList.length) {
+    recipients = tokenList.map(tok => tokens[tok]).filter(t => t && t.email);
+  } else {
+    const filter = recipientFilter || 'none';
+    for (const t of Object.values(tokens)) {
+      if (!t.email) continue;
+      if (filter === 'all-with-email') { recipients.push(t); continue; }
+      if (filter === 'activated'   && t.approved)                { recipients.push(t); continue; }
+      if (filter === 'expiring'    && t.approved && t.subscriptionExpiresAt) {
+        const d = Math.ceil((new Date(t.subscriptionExpiresAt) - new Date())/(1000*60*60*24));
+        if (d >= 0 && d <= 30) { recipients.push(t); continue; }
+      }
+      if (filter === 'expired' && t.approved && t.subscriptionExpiresAt) {
+        const d = Math.ceil((new Date(t.subscriptionExpiresAt) - new Date())/(1000*60*60*24));
+        if (d < 0) { recipients.push(t); continue; }
+      }
+      if (filter === 'submitted' && t.used && !t.approved) { recipients.push(t); continue; }
+    }
+  }
+
+  // Merge in extra (freeform) recipients — deduplicate by email address
+  if (Array.isArray(extraRecipients) && extraRecipients.length) {
+    const existingEmails = new Set(recipients.map(r => (r.email||'').toLowerCase()));
+    for (const er of extraRecipients) {
+      if (!er.email) continue;
+      const eml = er.email.trim().toLowerCase();
+      if (!eml || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(eml)) continue;
+      if (existingEmails.has(eml)) continue;
+      existingEmails.add(eml);
+      recipients.push({
+        customerName: er.name || er.email.split('@')[0],
+        email:        er.email.trim(),
+        packageType:  '',
+        productName:  '',
+        _external:    true,
+      });
+    }
+  }
+
+  if (!recipients.length) return res.status(400).json({ error: 'No recipients. Add at least one address or choose a filter that matches customers.' });
     const data = loadTemplates();
     const tmpl = data.templates.find(t => t.id === templateId);
     if (tmpl) { subject = subject || tmpl.subject; body = body || tmpl.body; }
@@ -688,6 +984,75 @@ app.post('/admin/settings', (req, res) => {
   res.json({ success: true });
 });
 
+// ── Customers CRUD ─────────────────────────────────────────────────────────────
+// GET /admin/customers — returns customer profiles merged with their tokens
+app.post('/admin/customers', (req, res) => {
+  const { adminKey } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const customers = loadCustomers();
+  const tokens    = loadTokens();
+
+  // Auto-import: create a customer profile for every unique customerName found in tokens
+  let changed = false;
+  for (const t of Object.values(tokens)) {
+    if (!t.customerName) continue;
+    const key = t.customerName.toLowerCase().replace(/\s+/g, '-');
+    if (!customers[key]) {
+      customers[key] = { id: key, name: t.customerName, email: t.email || '', wechat: t.wechat || '', createdAt: t.createdAt || new Date().toISOString() };
+      changed = true;
+    } else {
+      // Backfill email/wechat if customer record is missing them
+      if (!customers[key].email && t.email)   { customers[key].email   = t.email;   changed = true; }
+      if (!customers[key].wechat && t.wechat) { customers[key].wechat  = t.wechat;  changed = true; }
+    }
+  }
+  if (changed) saveCustomers(customers);
+
+  // Attach subscriptions (tokens) to each customer
+  const result = {};
+  for (const [cid, c] of Object.entries(customers)) {
+    const subs = Object.entries(tokens)
+      .filter(([, t]) => t.customerName && t.customerName.toLowerCase().replace(/\s+/g, '-') === cid)
+      .map(([token, t]) => ({ token, ...t }));
+    result[cid] = { ...c, subscriptions: subs };
+  }
+  res.json(result);
+});
+
+// POST /admin/customers/save — create or update a customer profile
+app.post('/admin/customers/save', (req, res) => {
+  const { adminKey, customer } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  if (!customer || !customer.name) return res.status(400).json({ error: 'Customer name is required.' });
+  const customers = loadCustomers();
+  const id = customer.id || customer.name.toLowerCase().replace(/\s+/g, '-');
+  customers[id] = { id, name: customer.name, email: customer.email || '', wechat: customer.wechat || '', notes: customer.notes || '', createdAt: customers[id]?.createdAt || new Date().toISOString(), updatedAt: new Date().toISOString() };
+  saveCustomers(customers);
+  res.json({ success: true, id });
+});
+
+// POST /admin/customers/delete — remove a customer profile (tokens are kept)
+app.post('/admin/customers/delete', (req, res) => {
+  const { adminKey, id } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const customers = loadCustomers();
+  delete customers[id];
+  saveCustomers(customers);
+  res.json({ success: true });
+});
+
+// POST /admin/customers/names — lightweight list of customer names for dropdowns
+app.post('/admin/customers/names', (req, res) => {
+  const { adminKey } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const customers = loadCustomers();
+  const tokens    = loadTokens();
+  // Merge names from tokens that don't have a profile yet
+  const names = new Set(Object.values(customers).map(c => c.name));
+  Object.values(tokens).forEach(t => { if (t.customerName) names.add(t.customerName); });
+  res.json([...names].sort((a, b) => a.localeCompare(b)));
+});
+
 // ── Resellers list ─────────────────────────────────────────────────────────────
 app.get('/admin/resellers', (req, res) => {
   if (!isAdmin(req.query.adminKey)) return res.status(401).json({ error: 'Unauthorized' });
@@ -702,6 +1067,31 @@ app.get('/admin/resellers', (req, res) => {
   res.json({ resellers: Object.values(map) });
 });
 
+// ── Website Content API ────────────────────────────────────────────────────────
+// Public read — landing page fetches this on load
+app.get('/api/website', (req, res) => {
+  res.json(loadWebsite());
+});
+// Admin write — full content save
+app.post('/admin/website/save', (req, res) => {
+  const { adminKey, content } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  if (!content || typeof content !== 'object') return res.status(400).json({ error: 'Invalid content.' });
+  const current = loadWebsite();
+  const merged  = { ...current, ...content };
+  saveWebsite(merged);
+  res.json({ success: true });
+});
+// Admin push notification (landing page banner) — separate from portal notification
+app.post('/admin/website/push-notification', (req, res) => {
+  const { adminKey, enabled, message, type } = req.body;
+  if (!isAdmin(adminKey)) return res.status(401).json({ error: 'Unauthorized' });
+  const w = loadWebsite();
+  w.pushNotification = { enabled: !!enabled, message: message || '', type: type || 'info' };
+  saveWebsite(w);
+  res.json({ success: true });
+});
+
 // ── Notifications ──────────────────────────────────────────────────────────────
 app.get('/admin/notification', (req, res) => {
   if (!isAdmin(req.query.adminKey)) return res.status(401).json({ error: 'Unauthorized' });
@@ -713,7 +1103,31 @@ app.post('/admin/notification', (req, res) => {
 });
 
 // ── Pages ──────────────────────────────────────────────────────────────────────
-app.get('/submit', (req, res) => res.sendFile(path.join(__dirname, 'public', 'form.html')));
-app.get('/admin',  (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+app.get('/submit',        (req, res) => res.sendFile(path.join(__dirname, 'public', 'form.html')));
+app.get('/portal',        (req, res) => res.sendFile(path.join(__dirname, 'public', 'portal.html')));
+app.get('/admin',         (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
+app.get('/install',       (req, res) => res.sendFile(path.join(__dirname, 'public', 'pwa-demo.html')));
+app.get('/',              (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+
+// ── PWA assets ────────────────────────────────────────────────────────────────
+app.get('/manifest.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/manifest+json');
+  res.setHeader('Cache-Control', 'public, max-age=86400');
+  res.sendFile(path.join(__dirname, 'public', 'manifest.json'));
+});
+app.get('/sw.js', (req, res) => {
+  res.setHeader('Content-Type', 'application/javascript');
+  res.setHeader('Service-Worker-Allowed', '/');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.sendFile(path.join(__dirname, 'public', 'sw.js'));
+});
+app.get('/icons/:file', (req, res) => {
+  const file = path.basename(req.params.file);           // prevent traversal
+  const iconsDir = path.join(__dirname, 'public', 'icons');
+  const fullPath = path.join(iconsDir, file);
+  if (!fullPath.startsWith(iconsDir)) return res.status(403).end();
+  res.setHeader('Cache-Control', 'public, max-age=604800');
+  res.sendFile(fullPath, err => { if (err) res.status(404).end(); });
+});
 
 app.listen(PORT, () => { console.log(`\n✅  DTC — Digital Tools Corner\n🌐  http://localhost:${PORT}\n`); });
